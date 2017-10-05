@@ -3,7 +3,7 @@ import random
 import pprint
 import datetime
 # pylint: disable=invalid-name
-Settings.MoveMouseDelay = 0
+Settings.MoveMouseDelay = 0.1
 #Settings.MinSimilarity = 0.8
 Settings.ActionLogs = 0
 
@@ -75,7 +75,7 @@ use = {
     'level_up' : 'ten',
     'upgrades' : True,
     'next_area' : 5, # goto next area each X levelups
-    'collect_gold' : True
+    'collect_gold' : False
     }
 
 
@@ -119,7 +119,7 @@ def printReport(timecounter, text):
 def findBonus():
     for b in bonuses:
         bonus_picture = "bonus_"+b+".png" 
-        if  bone.exists(Pattern(bonus_picture).similar(0.75)):
+        if  bone.exists(Pattern(bonus_picture).similar(0.75).targetOffset(-5,5)):
             bone.click()
             counters.addBonus()
 
